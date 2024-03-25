@@ -1,0 +1,94 @@
+@baseUrl = http://localhost:3333
+
+# Videos 
+
+# @name get_all_videos
+GET {{baseUrl}}/videos
+Content-Type: application/json
+
+###
+
+# @name get_video_by_id
+GET {{baseUrl}}/videos/1
+Content-Type: application/json
+
+###
+
+# @name search_videos_by_title
+GET {{baseUrl}}/videos/search?title=teste
+Content-Type: application/json
+
+###
+
+# @name get_videos_by_category
+GET {{baseUrl}}/videos/category/2
+Content-Type: application/json
+
+###
+
+# @name create_new_video
+POST {{baseUrl}}/videos
+Content-Type: application/json
+
+{
+    "title": "Video teste 2",
+    "description": "descrição",
+    "url": "https://www.youtube.com/watch?v=w2doKQXf1vg&t=1164s",
+    "categoryId": 2
+}
+
+###
+
+# @name update_video
+PUT {{baseUrl}}/videos/3
+Content-Type: application/json
+
+{
+    "title": "Teste editando video 2"
+}
+
+###
+
+# @name delete_video
+DELETE {{baseUrl}}/videos/2
+Content-Type: application/json
+
+# Categories 
+
+###
+
+# @name get_all_categories
+GET {{baseUrl}}/categories
+Content-Type: application/json
+
+###
+
+# @name get_category_by_id
+GET {{baseUrl}}/categories/4
+Content-Type: application/json
+
+###
+
+# @name create_new_category
+POST {{baseUrl}}/categories
+Content-Type: application/json
+
+{
+    "title": "Teste 3"
+}
+
+###
+
+# @name update_category
+PATCH {{baseUrl}}/categories/4
+Content-Type: application/json
+
+{
+    "title": "Teste 4"
+}
+
+###
+
+# @name delete_category
+DELETE {{baseUrl}}/categories/3
+Content-Type: application/json

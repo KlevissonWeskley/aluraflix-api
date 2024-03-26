@@ -1,4 +1,29 @@
 @baseUrl = http://localhost:3333
+@token = {{authenticate_user.response.body.token}}
+
+# Users
+
+# @name register_user
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+    "username": "klevissonws 2",
+    "password": "123456"
+}
+
+###
+
+# @name authenticate_user
+POST {{baseUrl}}/users/login
+Content-Type: application/json
+
+{
+    "username": "klevissonws",
+    "password": "123456"
+}
+
+###
 
 # Videos 
 
@@ -9,39 +34,44 @@ Content-Type: application/json
 ###
 
 # @name get_video_by_id
-GET {{baseUrl}}/videos/1
+GET {{baseUrl}}/videos/id
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 ###
 
 # @name search_videos_by_title
-GET {{baseUrl}}/videos/search?title=teste
+GET {{baseUrl}}/videos/search?title=
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 ###
 
 # @name get_videos_by_category
-GET {{baseUrl}}/videos/category/2
+GET {{baseUrl}}/videos/category/categoryId
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 ###
 
 # @name create_new_video
 POST {{baseUrl}}/videos
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
-    "title": "Video teste 2",
+    "title": "Video teste",
     "description": "descrição",
     "url": "https://www.youtube.com/watch?v=w2doKQXf1vg&t=1164s",
-    "categoryId": 2
+    "categoryId": 1
 }
 
 ###
 
 # @name update_video
-PUT {{baseUrl}}/videos/3
+PUT {{baseUrl}}/videos/id
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
     "title": "Teste editando video 2"
@@ -50,38 +80,43 @@ Content-Type: application/json
 ###
 
 # @name delete_video
-DELETE {{baseUrl}}/videos/2
+DELETE {{baseUrl}}/videos/id
 Content-Type: application/json
-
-# Categories 
+Authorization: Bearer {{token}}
 
 ###
+
+# Categories 
 
 # @name get_all_categories
 GET {{baseUrl}}/categories
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 ###
 
 # @name get_category_by_id
-GET {{baseUrl}}/categories/4
+GET {{baseUrl}}/categories/id
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 ###
 
 # @name create_new_category
 POST {{baseUrl}}/categories
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
-    "title": "Teste 3"
+    "title": "Programação"
 }
 
 ###
 
 # @name update_category
-PATCH {{baseUrl}}/categories/4
+PATCH {{baseUrl}}/categories/id
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
     "title": "Teste 4"
@@ -90,5 +125,6 @@ Content-Type: application/json
 ###
 
 # @name delete_category
-DELETE {{baseUrl}}/categories/3
+DELETE {{baseUrl}}/categories/id
 Content-Type: application/json
+Authorization: Bearer {{token}}

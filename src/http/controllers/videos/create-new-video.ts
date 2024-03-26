@@ -18,7 +18,8 @@ export async function createNewVideo(request: FastifyRequest, reply: FastifyRepl
                 title,
                 description,
                 url,
-                categoryId
+                categoryId,
+                userId: request.user.sub
             }
         })
 
